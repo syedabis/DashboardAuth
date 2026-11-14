@@ -1,7 +1,3 @@
-import crypto from "node:crypto";
-import fs from "node:fs";
-import path from "node:path";
-
 export interface EcommerceDashboardData {
   kpis: {
     totalSales: number;
@@ -49,225 +45,120 @@ export interface EcommerceDashboardData {
   }>;
 }
 
+export const defaultEcommerceData: EcommerceDashboardData = {
+  kpis: {
+    totalSales: 48560,
+    totalSalesFormatted: "$48,560.00",
+    totalOrders: 379,
+    activeCustomers: 820,
+    avgOrderValue: 128,
+    avgOrderValueFormatted: "$128.00",
+    returnOrdersCount: 18,
+    returnRate: "0%",
+    totalUnitsSold: 56445,
+  },
+  revenueOverviewData: [
+    { period: "Jan", revenue: 580000, ordersCount: 1400 },
+    { period: "Feb", revenue: 620000, ordersCount: 1550 },
+    { period: "Mar", revenue: 710000, ordersCount: 1720 },
+    { period: "Apr", revenue: 680000, ordersCount: 1680 },
+    { period: "May", revenue: 740000, ordersCount: 1810 },
+    { period: "Jun", revenue: 820000, ordersCount: 1980 },
+    { period: "Jul", revenue: 890000, ordersCount: 2150 },
+    { period: "Aug", revenue: 940000, ordersCount: 2280 },
+    { period: "Sep", revenue: 980000, ordersCount: 2410 },
+    { period: "Oct", revenue: 1050000, ordersCount: 2600 },
+    { period: "Nov", revenue: 1210000, ordersCount: 2950 },
+    { period: "Dec", revenue: 1480000, ordersCount: 3500 },
+  ],
+  topProducts: [
+    { name: "Linen Overshirt", stockCode: "85123A", share: "31%", sales: "$14,820", salesRaw: 14820 },
+    { name: "Everyday Tote", stockCode: "71053", share: "24%", sales: "$11,460", salesRaw: 11460 },
+    { name: "Ceramic Planter", stockCode: "84406B", share: "18%", sales: "$8,930", salesRaw: 8930 },
+    { name: "Wool Throw Blanket", stockCode: "22752", share: "15%", sales: "$7,280", salesRaw: 7280 },
+    { name: "Classic Desk Lamp", stockCode: "21733", share: "12%", sales: "$6,070", salesRaw: 6070 },
+  ],
+  countryBreakdown: [
+    { country: "United Kingdom", sales: 88450, orders: 420, percentage: "65.0%" },
+    { country: "Germany", sales: 6200, orders: 48, percentage: "6.0%" },
+    { country: "France", sales: 4800, orders: 36, percentage: "4.5%" },
+    { country: "EIRE", sales: 2500, orders: 20, percentage: "2.4%" },
+    { country: "Spain", sales: 2100, orders: 18, percentage: "2.0%" },
+  ],
+  topCustomers: [
+    { id: "17850", name: "Customer #17850", totalSpend: "$5,391.21", orderCount: 17 },
+    { id: "13047", name: "Customer #13047", totalSpend: "$3,210.50", orderCount: 9 },
+    { id: "12583", name: "Customer #12583", totalSpend: "$2,840.00", orderCount: 6 },
+    { id: "13767", name: "Customer #13767", totalSpend: "$1,950.80", orderCount: 5 },
+    { id: "17920", name: "Customer #17920", totalSpend: "$1,420.00", orderCount: 4 },
+  ],
+  recentOrders: [
+    {
+      id: "536365",
+      customer: "Customer #17850",
+      country: "United Kingdom",
+      date: "14/11/2026 08:26",
+      total: "$139.10",
+      status: "Completed",
+      itemsCount: 6,
+    },
+    {
+      id: "536366",
+      customer: "Customer #17850",
+      country: "United Kingdom",
+      date: "14/11/2026 08:28",
+      total: "$22.20",
+      status: "Completed",
+      itemsCount: 2,
+    },
+    {
+      id: "536367",
+      customer: "Customer #13047",
+      country: "United Kingdom",
+      date: "14/11/2026 08:34",
+      total: "$278.70",
+      status: "Completed",
+      itemsCount: 12,
+    },
+    {
+      id: "536368",
+      customer: "Customer #13047",
+      country: "United Kingdom",
+      date: "14/11/2026 08:34",
+      total: "$70.05",
+      status: "Completed",
+      itemsCount: 4,
+    },
+    {
+      id: "536369",
+      customer: "Customer #13047",
+      country: "United Kingdom",
+      date: "14/11/2026 08:35",
+      total: "$17.85",
+      status: "Completed",
+      itemsCount: 1,
+    },
+    {
+      id: "536370",
+      customer: "Customer #12583",
+      country: "France",
+      date: "14/11/2026 08:45",
+      total: "$855.86",
+      status: "Completed",
+      itemsCount: 20,
+    },
+    {
+      id: "C536379",
+      customer: "Customer #14527",
+      country: "United Kingdom",
+      date: "14/11/2026 09:41",
+      total: "$27.50",
+      status: "Returned",
+      itemsCount: 1,
+    },
+  ],
+};
+
 export async function fetchEcommerceSheetData(): Promise<EcommerceDashboardData | null> {
-  try {
-    let creds: {
-      client_email: string;
-      token_uri: string;
-      private_key: string;
-    } | null = null;
-
-    if (process.env.GOOGLE_SERVICE_ACCOUNT_KEY) {
-      try {
-        creds = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT_KEY);
-      } catch (err) {
-        console.error("Failed to parse GOOGLE_SERVICE_ACCOUNT_KEY env variable:", err);
-      }
-    }
-
-    if (!creds) {
-      const credsPath = path.join(process.cwd(), "proposal-493608-b0e3f0115d99.json");
-      if (fs.existsSync(credsPath)) {
-        creds = JSON.parse(fs.readFileSync(credsPath, "utf8"));
-      }
-    }
-
-    if (!creds?.client_email || !creds.private_key) {
-      console.error("Google service account credentials not found in env or file.");
-      return null;
-    }
-    const now = Math.floor(Date.now() / 1000);
-    const header = { alg: "RS256", typ: "JWT" };
-    const claim = {
-      iss: creds.client_email,
-      scope: "https://www.googleapis.com/auth/spreadsheets.readonly",
-      aud: creds.token_uri,
-      exp: now + 3600,
-      iat: now,
-    };
-
-    const b64 = (s: object) => Buffer.from(JSON.stringify(s)).toString("base64url");
-    const unsigned = `${b64(header)}.${b64(claim)}`;
-    const sign = crypto.createSign("RSA-SHA256");
-    sign.update(unsigned);
-    const sig = sign.sign(creds.private_key, "base64url");
-    const jwt = `${unsigned}.${sig}`;
-
-    const tokenRes = await fetch(creds.token_uri, {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams({
-        grant_type: "urn:ietf:params:oauth:grant-type:jwt-bearer",
-        assertion: jwt,
-      }),
-      cache: "no-store",
-    });
-
-    const tokenData = await tokenRes.json();
-    if (!tokenRes.ok || !tokenData.access_token) {
-      console.error("Failed to obtain Google access token:", tokenData);
-      return null;
-    }
-
-    const spreadsheetId = process.env.GOOGLE_SPREADSHEET_ID || "17zPEHexSYmVPnVvQ6DlxZP0X1WECmZSb7tRMkt5Vg8s";
-
-    // 1. Fetch Summary tab (Ultra-fast, ~2 KB)
-    const summaryRes = await fetch(
-      `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/Summary!A1:C60?valueRenderOption=UNFORMATTED_VALUE`,
-      {
-        headers: { Authorization: `Bearer ${tokenData.access_token}` },
-        cache: "no-store",
-      },
-    );
-
-    const summaryData = await summaryRes.json();
-    const summaryRows: (string | number)[][] = summaryData.values || [];
-
-    // 2. Fetch Recent Orders preview from Data tab (~50 rows)
-    const recentRes = await fetch(
-      `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/data!A1:H50?valueRenderOption=UNFORMATTED_VALUE`,
-      {
-        headers: { Authorization: `Bearer ${tokenData.access_token}` },
-        cache: "no-store",
-      },
-    );
-    const recentData = await recentRes.json();
-    const rawRecentRows: (string | number)[][] = recentData.values || [];
-
-    if (summaryRows.length === 0) return null;
-
-    let totalSales = 9747747.93;
-    let totalOrders = 25900;
-    let activeCustomers = 4372;
-    let returnOrdersCount = 10624;
-    let totalUnitsSold = 5176450;
-    let avgOrderValue = 376.36;
-    let returnRate = "41.0%";
-
-    const topProducts: EcommerceDashboardData["topProducts"] = [];
-    const countryBreakdown: EcommerceDashboardData["countryBreakdown"] = [];
-    const topCustomers: EcommerceDashboardData["topCustomers"] = [];
-
-    let currentSection = "";
-
-    for (const row of summaryRows) {
-      const key = String(row[0] ?? "").trim();
-      const val = row[1];
-      const extra = String(row[2] ?? "").trim();
-
-      if (key === "totalSales") totalSales = typeof val === "number" ? val : parseFloat(String(val));
-      else if (key === "totalOrders") totalOrders = typeof val === "number" ? val : parseInt(String(val), 10);
-      else if (key === "activeCustomers") activeCustomers = typeof val === "number" ? val : parseInt(String(val), 10);
-      else if (key === "returnOrdersCount")
-        returnOrdersCount = typeof val === "number" ? val : parseInt(String(val), 10);
-      else if (key === "totalUnitsSold") totalUnitsSold = typeof val === "number" ? val : parseInt(String(val), 10);
-      else if (key === "avgOrderValue") avgOrderValue = typeof val === "number" ? val : parseFloat(String(val));
-      else if (key === "returnRate") returnRate = String(val ?? extra);
-
-      if (key === "SECTION") {
-        currentSection = String(val ?? "").trim();
-        continue;
-      }
-
-      if (currentSection === "TOP_PRODUCTS" && key && key !== "StockCode") {
-        const stockCode = key;
-        const description = String(val ?? "");
-        const salesRaw = typeof row[2] === "number" ? row[2] : parseFloat(String(row[2] ?? "0"));
-        topProducts.push({
-          stockCode,
-          name: description,
-          salesRaw,
-          sales: `$${salesRaw.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`,
-          share: `${((salesRaw / totalSales) * 100).toFixed(1)}%`,
-        });
-      }
-
-      if (currentSection === "TOP_COUNTRIES" && key && key !== "Country") {
-        const country = key;
-        const orders = typeof val === "number" ? val : parseInt(String(val ?? "0"), 10);
-        const sales = typeof row[2] === "number" ? row[2] : parseFloat(String(row[2] ?? "0"));
-        countryBreakdown.push({
-          country,
-          orders,
-          sales: Math.round(sales),
-          percentage: `${((sales / totalSales) * 100).toFixed(1)}%`,
-        });
-      }
-
-      if (currentSection === "TOP_CUSTOMERS" && key && key !== "CustomerID") {
-        const id = key;
-        const count = typeof val === "number" ? val : parseInt(String(val ?? "0"), 10);
-        const sales = typeof row[2] === "number" ? row[2] : parseFloat(String(row[2] ?? "0"));
-        topCustomers.push({
-          id,
-          name: `Customer #${id}`,
-          orderCount: count,
-          totalSpend: `$${sales.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`,
-        });
-      }
-    }
-
-    // Format Recent Orders
-    const recentOrders: EcommerceDashboardData["recentOrders"] = [];
-    if (rawRecentRows.length > 1) {
-      const sliced = rawRecentRows.slice(1, 16);
-      for (const r of sliced) {
-        const invoiceNo = String(r[0] ?? "").trim();
-        const customerId = String(r[6] ?? "").trim();
-        const country = String(r[7] ?? "Unknown").trim();
-        const date = String(r[4] ?? "").trim();
-        const qty = typeof r[3] === "number" ? r[3] : parseInt(String(r[3] ?? "0"), 10);
-        const price = typeof r[5] === "number" ? r[5] : parseFloat(String(r[5] ?? "0"));
-        const isReturn = invoiceNo.startsWith("C") || qty < 0;
-        const lineTotal = Math.abs(qty * price);
-
-        recentOrders.push({
-          id: invoiceNo,
-          customer: customerId ? `Customer #${customerId}` : "Guest Customer",
-          country,
-          date,
-          total: `$${lineTotal.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`,
-          status: isReturn ? "Returned" : "Completed",
-          itemsCount: Math.abs(qty),
-        });
-      }
-    }
-
-    const revenueOverviewData = [
-      { period: "Jan", revenue: 580000, ordersCount: 1400 },
-      { period: "Feb", revenue: 620000, ordersCount: 1550 },
-      { period: "Mar", revenue: 710000, ordersCount: 1720 },
-      { period: "Apr", revenue: 680000, ordersCount: 1680 },
-      { period: "May", revenue: 740000, ordersCount: 1810 },
-      { period: "Jun", revenue: 820000, ordersCount: 1980 },
-      { period: "Jul", revenue: 890000, ordersCount: 2150 },
-      { period: "Aug", revenue: 940000, ordersCount: 2280 },
-      { period: "Sep", revenue: 980000, ordersCount: 2410 },
-      { period: "Oct", revenue: 1050000, ordersCount: 2600 },
-      { period: "Nov", revenue: 1210000, ordersCount: 2950 },
-      { period: "Dec", revenue: 1480000, ordersCount: 3500 },
-    ];
-
-    return {
-      kpis: {
-        totalSales,
-        totalSalesFormatted: `$${totalSales.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`,
-        totalOrders,
-        activeCustomers,
-        avgOrderValue,
-        avgOrderValueFormatted: `$${avgOrderValue.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`,
-        returnOrdersCount,
-        returnRate,
-        totalUnitsSold,
-      },
-      revenueOverviewData,
-      topProducts,
-      countryBreakdown,
-      topCustomers,
-      recentOrders,
-    };
-  } catch (error) {
-    console.error("Error fetching Google Sheets summary data:", error);
-    return null;
-  }
+  return defaultEcommerceData;
 }
