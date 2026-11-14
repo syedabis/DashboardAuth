@@ -2,17 +2,17 @@
 
 import { useState } from "react";
 
+import Image from "next/image";
 import { useRouter } from "next/navigation";
-
-import { ArrowRight, CheckCircle2, Command, Lock, Mail } from "lucide-react";
 
 export default function LoginPage() {
   const router = useRouter();
-  const defaultEmail = process.env.NEXT_PUBLIC_AUTH_EMAIL || "abis@datacrumbs.org";
+  const defaultEmail = process.env.NEXT_PUBLIC_AUTH_EMAIL || "faysal.naqvi@gascoengineering.com.pk";
   const defaultPassword = process.env.NEXT_PUBLIC_AUTH_PASSWORD || "abis@datacrumbs.org";
 
-  const [email, setEmail] = useState(defaultEmail);
+  const [usernameOrEmail, setUsernameOrEmail] = useState(defaultEmail);
   const [password, setPassword] = useState(defaultPassword);
+  const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -25,7 +25,7 @@ export default function LoginPage() {
       const res = await fetch("/api/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ email: usernameOrEmail, password }),
       });
 
       const data = await res.json();
@@ -34,7 +34,7 @@ export default function LoginPage() {
         router.push("/dashboard/ecommerce");
         router.refresh();
       } else {
-        setError(data.message || "Invalid email or password");
+        setError(data.message || "Invalid username or password");
       }
     } catch {
       setError("An error occurred during login. Please try again.");
@@ -44,87 +44,111 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-950 text-slate-100 p-4">
-      <div className="w-full max-w-md space-y-6">
-        {/* Header Branding */}
-        <div className="text-center space-y-3">
-          <div className="inline-flex items-center justify-center p-3 bg-indigo-600/20 text-indigo-400 rounded-2xl ring-1 ring-indigo-500/30">
-            <Command className="w-8 h-8" />
-          </div>
-          <h1 className="text-3xl font-bold tracking-tight text-white">Studio Admin</h1>
-          <p className="text-slate-400 text-sm">Sign in to access your E-commerce Dashboard</p>
-        </div>
+    <div className="relative flex min-h-screen items-center justify-center overflow-hidden font-sans">
+      {/* Background Wallpaper */}
+      <Image
+        src="/images/bg.webp"
+        alt="Background"
+        fill
+        priority
+        className="pointer-events-none select-none object-cover object-center"
+      />
 
-        {/* Login Form Card */}
-        <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 shadow-2xl backdrop-blur-xl space-y-6">
-          <form onSubmit={handleSubmit} className="space-y-4">
+      {/* Dark Overlay */}
+      <div className="pointer-events-none absolute inset-0 bg-black/45" />
+
+      {/* Login Card Container */}
+      <div className="relative z-10 m-6 w-full max-w-[440px]">
+        <div className="overflow-hidden rounded-[20px] border border-white/20 bg-white/97 shadow-[0_24px_80px_rgba(0,0,0,0.35)] backdrop-blur-sm">
+          {/* Top Green Gradient Accent Bar */}
+          <div className="h-[5px] bg-gradient-to-r from-[#5BBE44] to-[#8DC63F]" />
+
+          <div className="px-10 pt-9 pb-8 sm:px-10">
+            {/* Logo */}
+            <div className="mb-7 flex justify-center">
+              <Image
+                src="/images/gasco-logo.png"
+                alt="GASCO Engineering"
+                width={220}
+                height={55}
+                priority
+                className="h-12 w-auto object-contain"
+              />
+            </div>
+
+            {/* Title & Subtitle */}
+            <h2 className="mb-1.5 text-center font-[800] text-[#111827] text-[24px] tracking-tight">
+              Welcome to GASCO
+            </h2>
+            <p className="mb-[30px] text-center text-[#6B7280] text-[13.5px] leading-normal">
+              Your procurement intelligence platform
+            </p>
+
+            {/* Error Message */}
             {error && (
-              <div className="p-3 bg-red-500/10 border border-red-500/30 text-red-400 text-xs rounded-lg">{error}</div>
+              <div className="mb-4 rounded-lg border border-red-200 bg-red-50 p-3 text-red-600 text-xs">{error}</div>
             )}
 
-            <div className="space-y-1.5">
-              <label htmlFor="email-input" className="text-xs font-semibold text-slate-300">
-                Email Address
-              </label>
-              <div className="relative">
-                <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+            {/* Form */}
+            <form onSubmit={handleSubmit}>
+              <div className="mb-[18px]">
+                <label htmlFor="username-email" className="mb-1.5 block font-semibold text-[#374151] text-[13px]">
+                  Username or Email
+                </label>
                 <input
-                  id="email-input"
-                  type="email"
+                  id="username-email"
+                  type="text"
                   required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="abis@datacrumbs.org"
-                  className="w-full bg-slate-950 border border-slate-800 focus:border-indigo-500 text-white text-sm rounded-xl pl-10 pr-4 py-2.5 outline-none transition"
+                  value={usernameOrEmail}
+                  onChange={(e) => setUsernameOrEmail(e.target.value)}
+                  placeholder="Enter your username or email"
+                  className="box-border w-full rounded-[10px] border-[#E5E7EB] border-[1.5px] bg-[#F9FAFB] px-3.5 py-[11px] text-[#111827] text-[14px] outline-none transition focus:border-[#5BBE44] focus:bg-white"
                 />
               </div>
-            </div>
 
-            <div className="space-y-1.5">
-              <label htmlFor="password-input" className="text-xs font-semibold text-slate-300">
-                Password
-              </label>
-              <div className="relative">
-                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-                <input
-                  id="password-input"
-                  type="password"
-                  required
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  placeholder="••••••••••••"
-                  className="w-full bg-slate-950 border border-slate-800 focus:border-indigo-500 text-white text-sm rounded-xl pl-10 pr-4 py-2.5 outline-none transition"
-                />
+              <div className="mb-[22px]">
+                <label htmlFor="password" className="mb-1.5 block font-semibold text-[#374151] text-[13px]">
+                  Password
+                </label>
+                <div className="relative">
+                  <input
+                    id="password"
+                    type={showPassword ? "text" : "password"}
+                    required
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder="Enter your password"
+                    className="box-border w-full rounded-[10px] border-[#E5E7EB] border-[1.5px] bg-[#F9FAFB] px-3.5 py-[11px] pr-12 text-[#111827] text-[14px] outline-none transition focus:border-[#5BBE44] focus:bg-white"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute top-1/2 right-3.5 -translate-y-1/2 cursor-pointer border-none bg-transparent font-semibold text-[#9CA3AF] text-[12px] transition hover:text-[#4B5563]"
+                  >
+                    {showPassword ? "Hide" : "Show"}
+                  </button>
+                </div>
               </div>
-            </div>
 
-            <button
-              type="submit"
-              disabled={loading}
-              className="w-full bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 text-white font-medium text-sm py-2.5 rounded-xl transition flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/25 disabled:opacity-50"
-            >
-              {loading ? "Signing in..." : "Sign In"}
-              {!loading && <ArrowRight className="w-4 h-4" />}
-            </button>
-          </form>
+              <button
+                type="submit"
+                disabled={loading}
+                className="flex w-full cursor-pointer items-center justify-center rounded-[10px] border-none py-[13px] font-bold text-[15px] text-white shadow-[0_4px_14px_rgba(91,190,68,0.4)] transition hover:opacity-95 active:scale-[0.99] disabled:opacity-60"
+                style={{ background: "linear-gradient(135deg, #5BBE44, #3e8e2e)" }}
+              >
+                {loading ? "Signing in..." : "Sign in"}
+              </button>
+            </form>
 
-          {/* Credentials Info Box */}
-          <div className="border-t border-slate-800/80 pt-4 space-y-2">
-            <div className="flex items-center gap-1.5 text-xs text-indigo-400 font-medium">
-              <CheckCircle2 className="w-3.5 h-3.5" /> Demo Login Credentials (Stored in .env)
-            </div>
-            <div className="bg-slate-950/80 border border-slate-800/60 rounded-xl p-3 text-xs space-y-1 font-mono text-slate-300">
-              <div>
-                <span className="text-slate-500">Email:</span>{" "}
-                <span className="text-indigo-300">abis@datacrumbs.org</span>
-              </div>
-              <div>
-                <span className="text-slate-500">Password:</span>{" "}
-                <span className="text-indigo-300">abis@datacrumbs.org</span>
-              </div>
-            </div>
+            {/* Note */}
+            <p className="mt-5 text-center text-[#9CA3AF] text-[12px]">
+              Access is by invitation only. Contact your administrator.
+            </p>
           </div>
         </div>
+
+        {/* Footer Credit */}
+        <p className="mt-5 text-center text-[12px] text-white/60">Powered by DataCrumbs</p>
       </div>
     </div>
   );

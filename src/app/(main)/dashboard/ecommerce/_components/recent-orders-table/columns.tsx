@@ -21,7 +21,7 @@ import type { OrderRow } from "./schema";
 function formatOrderDate(dateStr: string) {
   try {
     const d = new Date(dateStr);
-    if (!isNaN(d.getTime())) {
+    if (!Number.isNaN(d.getTime())) {
       return format(d, "h:mm a, d MMM yyyy");
     }
   } catch {

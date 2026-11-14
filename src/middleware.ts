@@ -5,6 +5,16 @@ export function middleware(request: NextRequest) {
   const authToken = request.cookies.get("auth_token")?.value;
   const { pathname } = request.nextUrl;
 
+  // Root route: redirect based on auth status
+  if (pathname === "/") {
+    if (authToken) {
+      const dashboardUrl = new URL("/dashboard/ecommerce", request.url);
+      return NextResponse.redirect(dashboardUrl);
+    }
+    const loginUrl = new URL("/login", request.url);
+    return NextResponse.redirect(loginUrl);
+  }
+
   // Protect /dashboard routes
   if (pathname.startsWith("/dashboard")) {
     if (!authToken) {
@@ -25,5 +35,5 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/dashboard/:path*", "/login"],
+  matcher: ["/", "/dashboard/:path*", "/login"],
 };

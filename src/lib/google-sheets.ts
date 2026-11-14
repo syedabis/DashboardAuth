@@ -72,7 +72,7 @@ export async function fetchEcommerceSheetData(): Promise<EcommerceDashboardData 
       }
     }
 
-    if (!creds || !creds.client_email || !creds.private_key) {
+    if (!creds?.client_email || !creds.private_key) {
       console.error("Google service account credentials not found in env or file.");
       return null;
     }
@@ -109,7 +109,7 @@ export async function fetchEcommerceSheetData(): Promise<EcommerceDashboardData 
       return null;
     }
 
-    const spreadsheetId = "17zPEHexSYmVPnVvQ6DlxZP0X1WECmZSb7tRMkt5Vg8s";
+    const spreadsheetId = process.env.GOOGLE_SPREADSHEET_ID || "17zPEHexSYmVPnVvQ6DlxZP0X1WECmZSb7tRMkt5Vg8s";
 
     // 1. Fetch Summary tab (Ultra-fast, ~2 KB)
     const summaryRes = await fetch(
@@ -151,9 +151,9 @@ export async function fetchEcommerceSheetData(): Promise<EcommerceDashboardData 
     let currentSection = "";
 
     for (const row of summaryRows) {
-      const key = String(row[0] || "").trim();
+      const key = String(row[0] ?? "").trim();
       const val = row[1];
-      const extra = String(row[2] || "").trim();
+      const extra = String(row[2] ?? "").trim();
 
       if (key === "totalSales") totalSales = typeof val === "number" ? val : parseFloat(String(val));
       else if (key === "totalOrders") totalOrders = typeof val === "number" ? val : parseInt(String(val), 10);
@@ -162,17 +162,17 @@ export async function fetchEcommerceSheetData(): Promise<EcommerceDashboardData 
         returnOrdersCount = typeof val === "number" ? val : parseInt(String(val), 10);
       else if (key === "totalUnitsSold") totalUnitsSold = typeof val === "number" ? val : parseInt(String(val), 10);
       else if (key === "avgOrderValue") avgOrderValue = typeof val === "number" ? val : parseFloat(String(val));
-      else if (key === "returnRate") returnRate = String(val || extra);
+      else if (key === "returnRate") returnRate = String(val ?? extra);
 
       if (key === "SECTION") {
-        currentSection = String(val || "").trim();
+        currentSection = String(val ?? "").trim();
         continue;
       }
 
       if (currentSection === "TOP_PRODUCTS" && key && key !== "StockCode") {
         const stockCode = key;
-        const description = String(val || "");
-        const salesRaw = typeof row[2] === "number" ? row[2] : parseFloat(String(row[2] || "0"));
+        const description = String(val ?? "");
+        const salesRaw = typeof row[2] === "number" ? row[2] : parseFloat(String(row[2] ?? "0"));
         topProducts.push({
           stockCode,
           name: description,
@@ -184,8 +184,8 @@ export async function fetchEcommerceSheetData(): Promise<EcommerceDashboardData 
 
       if (currentSection === "TOP_COUNTRIES" && key && key !== "Country") {
         const country = key;
-        const orders = typeof val === "number" ? val : parseInt(String(val || "0"), 10);
-        const sales = typeof row[2] === "number" ? row[2] : parseFloat(String(row[2] || "0"));
+        const orders = typeof val === "number" ? val : parseInt(String(val ?? "0"), 10);
+        const sales = typeof row[2] === "number" ? row[2] : parseFloat(String(row[2] ?? "0"));
         countryBreakdown.push({
           country,
           orders,
@@ -196,8 +196,8 @@ export async function fetchEcommerceSheetData(): Promise<EcommerceDashboardData 
 
       if (currentSection === "TOP_CUSTOMERS" && key && key !== "CustomerID") {
         const id = key;
-        const count = typeof val === "number" ? val : parseInt(String(val || "0"), 10);
-        const sales = typeof row[2] === "number" ? row[2] : parseFloat(String(row[2] || "0"));
+        const count = typeof val === "number" ? val : parseInt(String(val ?? "0"), 10);
+        const sales = typeof row[2] === "number" ? row[2] : parseFloat(String(row[2] ?? "0"));
         topCustomers.push({
           id,
           name: `Customer #${id}`,
@@ -212,12 +212,12 @@ export async function fetchEcommerceSheetData(): Promise<EcommerceDashboardData 
     if (rawRecentRows.length > 1) {
       const sliced = rawRecentRows.slice(1, 16);
       for (const r of sliced) {
-        const invoiceNo = String(r[0] || "").trim();
-        const customerId = String(r[6] || "").trim();
-        const country = String(r[7] || "Unknown").trim();
-        const date = String(r[4] || "").trim();
-        const qty = typeof r[3] === "number" ? r[3] : parseInt(String(r[3] || "0"), 10);
-        const price = typeof r[5] === "number" ? r[5] : parseFloat(String(r[5] || "0"));
+        const invoiceNo = String(r[0] ?? "").trim();
+        const customerId = String(r[6] ?? "").trim();
+        const country = String(r[7] ?? "Unknown").trim();
+        const date = String(r[4] ?? "").trim();
+        const qty = typeof r[3] === "number" ? r[3] : parseInt(String(r[3] ?? "0"), 10);
+        const price = typeof r[5] === "number" ? r[5] : parseFloat(String(r[5] ?? "0"));
         const isReturn = invoiceNo.startsWith("C") || qty < 0;
         const lineTotal = Math.abs(qty * price);
 

@@ -1,7 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
 
 import { Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
 import type { EcommerceDashboardData } from "@/lib/google-sheets";
 
 interface TopProductsProps {

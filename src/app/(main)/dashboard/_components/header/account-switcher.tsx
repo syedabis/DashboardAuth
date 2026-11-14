@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 
+import { useRouter } from "next/navigation";
+
 import { cn } from "cn";
 import { BadgeCheck, Bell, Check, CreditCard, LogOut } from "lucide-react";
 
@@ -18,6 +20,7 @@ import { getInitials } from "@/lib/utils";
 
 export function AccountSwitcher({
   users,
+  initialUser,
 }: {
   readonly users: ReadonlyArray<{
     readonly id: string;
@@ -26,17 +29,34 @@ export function AccountSwitcher({
     readonly avatar: string;
     readonly role: string;
   }>;
+  readonly initialUser?: {
+    readonly id: string;
+    readonly name: string;
+    readonly email: string;
+    readonly avatar: string;
+    readonly role: string;
+  };
 }) {
-  const [activeUser, setActiveUser] = useState(users[0]);
+  const router = useRouter();
+  const [activeUser, setActiveUser] = useState(initialUser ?? users[0]);
 
   if (!activeUser) {
     return null;
   }
 
+  const handleLogout = async () => {
+    try {
+      await fetch("/api/auth/logout", { method: "POST" });
+    } finally {
+      router.push("/login");
+      router.refresh();
+    }
+  };
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Avatar className="size-8 rounded-lg">
+        <Avatar className="size-8 cursor-pointer rounded-lg">
           <AvatarImage src={activeUser.avatar || undefined} alt={activeUser.name} />
           <AvatarFallback>{getInitials(activeUser.name)}</AvatarFallback>
         </Avatar>
@@ -85,7 +105,7 @@ export function AccountSwitcher({
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>
+        <DropdownMenuItem onClick={handleLogout} className="cursor-pointer text-destructive focus:text-destructive">
           <LogOut />
           Log out
         </DropdownMenuItem>
