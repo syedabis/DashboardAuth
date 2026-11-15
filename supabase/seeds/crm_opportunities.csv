@@ -1,0 +1,31 @@
+code,account,stage,priority,health,value,contact,close_date
+OP-1842,Asteron Bioworks,Proposal Sent,1,On Track,42000,Sarah Jenkins,2026-12-15
+OP-1841,BlueHaven Systems,Discovery,1,On Hold,18500,Michael Chen,2026-12-20
+OP-1840,Cinder Health,Negotiation,1,At Risk,63000,Dr. Rebecca Alva,2026-11-30
+OP-1839,Drift Manufacturing,Qualified,2,At Risk,26400,Tom Bradley,2027-01-10
+OP-1838,Everline Freight,Proposal Sent,1,Needs Review,58900,Marcus Vance,2026-12-05
+OP-1837,Fieldstone Capital,Discovery,1,On Track,31200,Elena Rostova,2026-12-18
+OP-1836,Gilded Solar,Negotiation,2,On Track,19800,David Kim,2026-12-01
+OP-1835,Halcyon Robotics,Proposal Sent,1,On Track,74500,Alicia Thorne,2026-12-22
+OP-1834,Ironclad Security,Qualified,3,Needs Review,52000,Greg Miller,2027-01-15
+OP-1833,Juniper Analytics,Discovery,1,On Track,37600,Hannah Patel,2026-12-28
+OP-1832,Kestrel Aero,Negotiation,1,On Track,88000,Capt. Robert Price,2026-12-10
+OP-1831,Luminary Media,Proposal Sent,2,On Track,22400,Chloe Bennett,2026-12-14
+OP-1830,Meridian Logistics,Discovery,1,Needs Review,45000,Oliver Scott,2027-01-05
+OP-1829,Nexus Biotech,Negotiation,1,On Track,68000,Dr. Sanjay Gupta,2026-12-08
+OP-1828,Omnia Cloud,Proposal Sent,1,On Track,92500,Valerie Adams,2026-12-19
+OP-1827,Pioneer Retail Group,Qualified,2,On Hold,34000,James Wright,2027-01-20
+OP-1826,Quantum Dynamics,Negotiation,1,On Track,115000,Arthur Pendelton,2026-12-31
+OP-1825,Redline Energy,Discovery,2,At Risk,54000,Fiona Gallagher,2027-01-08
+OP-1824,Solace Health Systems,Proposal Sent,1,On Track,29500,Nathan Drake,2026-12-12
+OP-1823,Terravault Systems,Qualified,3,Needs Review,48200,Simon Bauer,2027-01-25
+OP-1822,Vantage AI Labs,Negotiation,1,On Track,71000,Lucas Meyer,2026-12-23
+OP-1821,Waveform Digital,Discovery,2,On Track,39500,Maya Lin,2027-01-12
+OP-1820,Zenith Financial,Proposal Sent,1,On Track,83000,Julian Sterling,2026-12-17
+OP-1819,Apex Global Logistics,Qualified,2,On Track,62000,Brian Cooper,2027-01-18
+OP-1818,Beacon Software,Discovery,1,Needs Review,27500,Lisa Ray,2026-12-29
+OP-1817,Cipher Networks,Negotiation,1,On Track,49000,Kevin Zhang,2026-12-09
+OP-1816,Dynamic Grid Power,Proposal Sent,1,At Risk,76000,Patrick Murphy,2026-12-03
+OP-1815,Echo Mobile Services,Qualified,3,On Hold,18000,Grace Hopper,2027-02-01
+OP-1814,Fusion Power Group,Negotiation,1,On Track,95000,Dr. Charles Xavier,2026-12-21
+OP-1813,Horizon Transport,Discovery,2,On Track,53500,Danielle Brooks,2027-01-14

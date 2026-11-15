@@ -3,19 +3,29 @@ import { CalendarDays, CalendarRange } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardAction, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { type CrmDashboardData, defaultCrmData } from "@/lib/crm/data";
 
-const proposalSent = 12;
-const proposalGoal = 18;
-const proposalProgressPercentage = Math.round((proposalSent / proposalGoal) * 100);
-const proposalGoalBarCount = 42;
-const activeProposalBars = Math.round((proposalSent / proposalGoal) * proposalGoalBarCount);
+interface TaskRemindersProps {
+  proposals?: CrmDashboardData["proposals"];
+  meetings?: CrmDashboardData["meetings"];
+}
 
-const proposalGoalBars = Array.from({ length: proposalGoalBarCount }, (_, index) => ({
-  id: `proposal-goal-${index + 1}`,
-  active: index < activeProposalBars,
-}));
+const defaultProposalGoalBarCount = 42;
 
-export function TaskReminders() {
+export function TaskReminders({ proposals, meetings }: TaskRemindersProps) {
+  const currentProposals = proposals || defaultCrmData.proposals;
+  const currentMeetings = meetings && meetings.length > 0 ? meetings : defaultCrmData.meetings;
+  const topMeeting = currentMeetings[0];
+
+  const activeProposalBars = Math.round(
+    (currentProposals.proposalSent / (currentProposals.proposalGoal || 1)) * defaultProposalGoalBarCount,
+  );
+
+  const proposalGoalBars = Array.from({ length: defaultProposalGoalBarCount }, (_, index) => ({
+    id: `proposal-goal-${index + 1}`,
+    active: index < activeProposalBars,
+  }));
+
   return (
     <section className="grid grid-cols-1 gap-4 xl:grid-cols-12">
       <Card className="xl:col-span-8">
@@ -58,9 +68,11 @@ export function TaskReminders() {
                   </div>
                   <div className="min-w-0">
                     <div className="truncate font-medium text-primary-foreground text-xs leading-none">
-                      Product demo with Tim
+                      {topMeeting?.title || "Product demo with Tim"}
                     </div>
-                    <div className="truncate text-[10px] text-primary-foreground/75">Weblabs Studio</div>
+                    <div className="truncate text-[10px] text-primary-foreground/75">
+                      {topMeeting?.company || "Weblabs Studio"}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -77,9 +89,9 @@ export function TaskReminders() {
         <CardContent className="flex flex-col gap-1">
           <div className="flex items-end justify-between gap-3">
             <div className="font-medium text-2xl tabular-nums leading-none">
-              {proposalSent} <span className="font-normal text-base text-muted-foreground">sent</span>
+              {currentProposals.proposalSent} <span className="font-normal text-base text-muted-foreground">sent</span>
             </div>
-            <div className="text-muted-foreground text-sm tabular-nums">{proposalGoal} target</div>
+            <div className="text-muted-foreground text-sm tabular-nums">{currentProposals.proposalGoal} target</div>
           </div>
           <div className="flex h-10 w-full items-end gap-0.5">
             {proposalGoalBars.map((bar) => (
@@ -94,7 +106,7 @@ export function TaskReminders() {
             ))}
           </div>
           <p className="text-muted-foreground text-sm">
-            {proposalProgressPercentage}% of this month&apos;s proposal target reached.
+            {currentProposals.proposalProgressPercentage}% of this month&apos;s proposal target reached.
           </p>
         </CardContent>
       </Card>

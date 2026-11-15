@@ -6,6 +6,12 @@ import { Card, CardAction, CardContent, CardHeader, CardTitle } from "@/componen
 import { type ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
 import { Progress } from "@/components/ui/progress";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import type { CrmDashboardData } from "@/lib/crm/data";
+
+interface PipelineActivityProps {
+  data?: CrmDashboardData["pipelineFlow"];
+  discoveryStats?: CrmDashboardData["discoveryStats"];
+}
 
 const pipelineChartValues = [34, 38, 31, 47, 42, 51, 44, 40, 58, 46, 43, 49] as const;
 
@@ -31,11 +37,13 @@ function getRollingMonthData(values: readonly number[]) {
   });
 }
 
-export function PipelineActivity() {
-  const pipelineChartData = getRollingMonthData(pipelineChartValues);
-  const totalQualified = pipelineChartData.reduce((sum, item) => sum + item.qualified, 0);
-  const discoveryCallsBooked = 184;
-  const discoveryProgress = Math.round((discoveryCallsBooked / totalQualified) * 100);
+export function PipelineActivity({ data, discoveryStats }: PipelineActivityProps) {
+  const pipelineChartData = data && data.length > 0 ? data : getRollingMonthData(pipelineChartValues);
+  const totalQualified =
+    discoveryStats?.totalQualified ?? pipelineChartData.reduce((sum, item) => sum + item.qualified, 0);
+  const discoveryCallsBooked = discoveryStats?.discoveryCallsBooked ?? 184;
+  const discoveryProgress =
+    discoveryStats?.discoveryProgress ?? Math.round((discoveryCallsBooked / (totalQualified || 1)) * 100);
 
   return (
     <div className="grid grid-cols-1 gap-4 xl:grid-cols-12">

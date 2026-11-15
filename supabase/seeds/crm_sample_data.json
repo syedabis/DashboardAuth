@@ -1,0 +1,476 @@
+{
+  "kpis": {
+    "pipeline_value": 284500,
+    "pipeline_value_prev": 254200,
+    "qualified_lead_rate": 28.4,
+    "qualified_lead_rate_prev": 30.9,
+    "open_opportunities": 42,
+    "open_opportunities_prev": 35,
+    "lead_to_deal_rate": 16.8,
+    "lead_to_deal_rate_prev": 13.6,
+    "proposal_sent": 12,
+    "proposal_goal": 18,
+    "discovery_calls_booked": 184
+  },
+  "pipelineStats": [
+    {
+      "period": "Jan",
+      "month_num": 1,
+      "year": 2026,
+      "qualified_leads": 34,
+      "discovery_calls": 14,
+      "proposals_sent": 8,
+      "closed_deals": 4,
+      "pipeline_value": 195000
+    },
+    {
+      "period": "Feb",
+      "month_num": 2,
+      "year": 2026,
+      "qualified_leads": 38,
+      "discovery_calls": 16,
+      "proposals_sent": 10,
+      "closed_deals": 5,
+      "pipeline_value": 210000
+    },
+    {
+      "period": "Mar",
+      "month_num": 3,
+      "year": 2026,
+      "qualified_leads": 31,
+      "discovery_calls": 13,
+      "proposals_sent": 7,
+      "closed_deals": 4,
+      "pipeline_value": 188000
+    },
+    {
+      "period": "Apr",
+      "month_num": 4,
+      "year": 2026,
+      "qualified_leads": 47,
+      "discovery_calls": 20,
+      "proposals_sent": 13,
+      "closed_deals": 7,
+      "pipeline_value": 245000
+    },
+    {
+      "period": "May",
+      "month_num": 5,
+      "year": 2026,
+      "qualified_leads": 42,
+      "discovery_calls": 18,
+      "proposals_sent": 11,
+      "closed_deals": 6,
+      "pipeline_value": 230000
+    },
+    {
+      "period": "Jun",
+      "month_num": 6,
+      "year": 2026,
+      "qualified_leads": 51,
+      "discovery_calls": 22,
+      "proposals_sent": 15,
+      "closed_deals": 8,
+      "pipeline_value": 268000
+    },
+    {
+      "period": "Jul",
+      "month_num": 7,
+      "year": 2026,
+      "qualified_leads": 44,
+      "discovery_calls": 19,
+      "proposals_sent": 12,
+      "closed_deals": 6,
+      "pipeline_value": 240000
+    },
+    {
+      "period": "Aug",
+      "month_num": 8,
+      "year": 2026,
+      "qualified_leads": 40,
+      "discovery_calls": 17,
+      "proposals_sent": 10,
+      "closed_deals": 5,
+      "pipeline_value": 225000
+    },
+    {
+      "period": "Sep",
+      "month_num": 9,
+      "year": 2026,
+      "qualified_leads": 58,
+      "discovery_calls": 25,
+      "proposals_sent": 17,
+      "closed_deals": 9,
+      "pipeline_value": 295000
+    },
+    {
+      "period": "Oct",
+      "month_num": 10,
+      "year": 2026,
+      "qualified_leads": 46,
+      "discovery_calls": 19,
+      "proposals_sent": 12,
+      "closed_deals": 7,
+      "pipeline_value": 254200
+    },
+    {
+      "period": "Nov",
+      "month_num": 11,
+      "year": 2026,
+      "qualified_leads": 43,
+      "discovery_calls": 18,
+      "proposals_sent": 12,
+      "closed_deals": 7,
+      "pipeline_value": 284500
+    },
+    {
+      "period": "Dec",
+      "month_num": 12,
+      "year": 2026,
+      "qualified_leads": 49,
+      "discovery_calls": 21,
+      "proposals_sent": 14,
+      "closed_deals": 8,
+      "pipeline_value": 310000
+    }
+  ],
+  "meetings": [
+    {
+      "title": "Product demo with Tim",
+      "company": "Weblabs Studio",
+      "time_slot": "09:00 - 09:45",
+      "meeting_date": "2026-11-16",
+      "status": "Scheduled"
+    },
+    {
+      "title": "Security architecture review",
+      "company": "Omnia Cloud",
+      "time_slot": "11:00 - 11:45",
+      "meeting_date": "2026-11-16",
+      "status": "Scheduled"
+    },
+    {
+      "title": "Final proposal terms alignment",
+      "company": "Kestrel Aero",
+      "time_slot": "14:00 - 14:30",
+      "meeting_date": "2026-11-16",
+      "status": "Scheduled"
+    },
+    {
+      "title": "Quarterly partnership sync",
+      "company": "Quantum Dynamics",
+      "time_slot": "16:00 - 16:45",
+      "meeting_date": "2026-11-17",
+      "status": "Scheduled"
+    },
+    {
+      "title": "Discovery & technical kickoff",
+      "company": "Halcyon Robotics",
+      "time_slot": "10:00 - 10:45",
+      "meeting_date": "2026-11-18",
+      "status": "Scheduled"
+    }
+  ],
+  "opportunities": [
+    {
+      "code": "OP-1842",
+      "account": "Asteron Bioworks",
+      "stage": "Proposal Sent",
+      "priority": 1,
+      "health": "On Track",
+      "value": 42000,
+      "contact": "Sarah Jenkins",
+      "close_date": "2026-12-15"
+    },
+    {
+      "code": "OP-1841",
+      "account": "BlueHaven Systems",
+      "stage": "Discovery",
+      "priority": 1,
+      "health": "On Hold",
+      "value": 18500,
+      "contact": "Michael Chen",
+      "close_date": "2026-12-20"
+    },
+    {
+      "code": "OP-1840",
+      "account": "Cinder Health",
+      "stage": "Negotiation",
+      "priority": 1,
+      "health": "At Risk",
+      "value": 63000,
+      "contact": "Dr. Rebecca Alva",
+      "close_date": "2026-11-30"
+    },
+    {
+      "code": "OP-1839",
+      "account": "Drift Manufacturing",
+      "stage": "Qualified",
+      "priority": 2,
+      "health": "At Risk",
+      "value": 26400,
+      "contact": "Tom Bradley",
+      "close_date": "2027-01-10"
+    },
+    {
+      "code": "OP-1838",
+      "account": "Everline Freight",
+      "stage": "Proposal Sent",
+      "priority": 1,
+      "health": "Needs Review",
+      "value": 58900,
+      "contact": "Marcus Vance",
+      "close_date": "2026-12-05"
+    },
+    {
+      "code": "OP-1837",
+      "account": "Fieldstone Capital",
+      "stage": "Discovery",
+      "priority": 1,
+      "health": "On Track",
+      "value": 31200,
+      "contact": "Elena Rostova",
+      "close_date": "2026-12-18"
+    },
+    {
+      "code": "OP-1836",
+      "account": "Gilded Solar",
+      "stage": "Negotiation",
+      "priority": 2,
+      "health": "On Track",
+      "value": 19800,
+      "contact": "David Kim",
+      "close_date": "2026-12-01"
+    },
+    {
+      "code": "OP-1835",
+      "account": "Halcyon Robotics",
+      "stage": "Proposal Sent",
+      "priority": 1,
+      "health": "On Track",
+      "value": 74500,
+      "contact": "Alicia Thorne",
+      "close_date": "2026-12-22"
+    },
+    {
+      "code": "OP-1834",
+      "account": "Ironclad Security",
+      "stage": "Qualified",
+      "priority": 3,
+      "health": "Needs Review",
+      "value": 52000,
+      "contact": "Greg Miller",
+      "close_date": "2027-01-15"
+    },
+    {
+      "code": "OP-1833",
+      "account": "Juniper Analytics",
+      "stage": "Discovery",
+      "priority": 1,
+      "health": "On Track",
+      "value": 37600,
+      "contact": "Hannah Patel",
+      "close_date": "2026-12-28"
+    },
+    {
+      "code": "OP-1832",
+      "account": "Kestrel Aero",
+      "stage": "Negotiation",
+      "priority": 1,
+      "health": "On Track",
+      "value": 88000,
+      "contact": "Capt. Robert Price",
+      "close_date": "2026-12-10"
+    },
+    {
+      "code": "OP-1831",
+      "account": "Luminary Media",
+      "stage": "Proposal Sent",
+      "priority": 2,
+      "health": "On Track",
+      "value": 22400,
+      "contact": "Chloe Bennett",
+      "close_date": "2026-12-14"
+    },
+    {
+      "code": "OP-1830",
+      "account": "Meridian Logistics",
+      "stage": "Discovery",
+      "priority": 1,
+      "health": "Needs Review",
+      "value": 45000,
+      "contact": "Oliver Scott",
+      "close_date": "2027-01-05"
+    },
+    {
+      "code": "OP-1829",
+      "account": "Nexus Biotech",
+      "stage": "Negotiation",
+      "priority": 1,
+      "health": "On Track",
+      "value": 68000,
+      "contact": "Dr. Sanjay Gupta",
+      "close_date": "2026-12-08"
+    },
+    {
+      "code": "OP-1828",
+      "account": "Omnia Cloud",
+      "stage": "Proposal Sent",
+      "priority": 1,
+      "health": "On Track",
+      "value": 92500,
+      "contact": "Valerie Adams",
+      "close_date": "2026-12-19"
+    },
+    {
+      "code": "OP-1827",
+      "account": "Pioneer Retail Group",
+      "stage": "Qualified",
+      "priority": 2,
+      "health": "On Hold",
+      "value": 34000,
+      "contact": "James Wright",
+      "close_date": "2027-01-20"
+    },
+    {
+      "code": "OP-1826",
+      "account": "Quantum Dynamics",
+      "stage": "Negotiation",
+      "priority": 1,
+      "health": "On Track",
+      "value": 115000,
+      "contact": "Arthur Pendelton",
+      "close_date": "2026-12-31"
+    },
+    {
+      "code": "OP-1825",
+      "account": "Redline Energy",
+      "stage": "Discovery",
+      "priority": 2,
+      "health": "At Risk",
+      "value": 54000,
+      "contact": "Fiona Gallagher",
+      "close_date": "2027-01-08"
+    },
+    {
+      "code": "OP-1824",
+      "account": "Solace Health Systems",
+      "stage": "Proposal Sent",
+      "priority": 1,
+      "health": "On Track",
+      "value": 29500,
+      "contact": "Nathan Drake",
+      "close_date": "2026-12-12"
+    },
+    {
+      "code": "OP-1823",
+      "account": "Terravault Systems",
+      "stage": "Qualified",
+      "priority": 3,
+      "health": "Needs Review",
+      "value": 48200,
+      "contact": "Simon Bauer",
+      "close_date": "2027-01-25"
+    },
+    {
+      "code": "OP-1822",
+      "account": "Vantage AI Labs",
+      "stage": "Negotiation",
+      "priority": 1,
+      "health": "On Track",
+      "value": 71000,
+      "contact": "Lucas Meyer",
+      "close_date": "2026-12-23"
+    },
+    {
+      "code": "OP-1821",
+      "account": "Waveform Digital",
+      "stage": "Discovery",
+      "priority": 2,
+      "health": "On Track",
+      "value": 39500,
+      "contact": "Maya Lin",
+      "close_date": "2027-01-12"
+    },
+    {
+      "code": "OP-1820",
+      "account": "Zenith Financial",
+      "stage": "Proposal Sent",
+      "priority": 1,
+      "health": "On Track",
+      "value": 83000,
+      "contact": "Julian Sterling",
+      "close_date": "2026-12-17"
+    },
+    {
+      "code": "OP-1819",
+      "account": "Apex Global Logistics",
+      "stage": "Qualified",
+      "priority": 2,
+      "health": "On Track",
+      "value": 62000,
+      "contact": "Brian Cooper",
+      "close_date": "2027-01-18"
+    },
+    {
+      "code": "OP-1818",
+      "account": "Beacon Software",
+      "stage": "Discovery",
+      "priority": 1,
+      "health": "Needs Review",
+      "value": 27500,
+      "contact": "Lisa Ray",
+      "close_date": "2026-12-29"
+    },
+    {
+      "code": "OP-1817",
+      "account": "Cipher Networks",
+      "stage": "Negotiation",
+      "priority": 1,
+      "health": "On Track",
+      "value": 49000,
+      "contact": "Kevin Zhang",
+      "close_date": "2026-12-09"
+    },
+    {
+      "code": "OP-1816",
+      "account": "Dynamic Grid Power",
+      "stage": "Proposal Sent",
+      "priority": 1,
+      "health": "At Risk",
+      "value": 76000,
+      "contact": "Patrick Murphy",
+      "close_date": "2026-12-03"
+    },
+    {
+      "code": "OP-1815",
+      "account": "Echo Mobile Services",
+      "stage": "Qualified",
+      "priority": 3,
+      "health": "On Hold",
+      "value": 18000,
+      "contact": "Grace Hopper",
+      "close_date": "2027-02-01"
+    },
+    {
+      "code": "OP-1814",
+      "account": "Fusion Power Group",
+      "stage": "Negotiation",
+      "priority": 1,
+      "health": "On Track",
+      "value": 95000,
+      "contact": "Dr. Charles Xavier",
+      "close_date": "2026-12-21"
+    },
+    {
+      "code": "OP-1813",
+      "account": "Horizon Transport",
+      "stage": "Discovery",
+      "priority": 2,
+      "health": "On Track",
+      "value": 53500,
+      "contact": "Danielle Brooks",
+      "close_date": "2027-01-14"
+    }
+  ]
+}

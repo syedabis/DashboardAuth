@@ -29,21 +29,26 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import type { CrmDashboardData } from "@/lib/crm/data";
 import { dataTableFeatures } from "@/lib/data-table-features";
 
 import { opportunitiesColumns } from "./opportunities-table/columns";
 import opportunitiesData from "./opportunities-table/data.json";
 import { opportunitiesSchema } from "./opportunities-table/schema";
 
+interface OpportunitiesSectionProps {
+  opportunities?: CrmDashboardData["opportunities"];
+}
+
 const stageOptions = ["all", "Proposal Sent", "Discovery", "Negotiation", "Qualified"] as const;
 const healthOptions = ["all", "On Track", "Needs Review", "At Risk", "On Hold"] as const;
-const opportunities = opportunitiesSchema.parse(opportunitiesData);
+const defaultOpportunities = opportunitiesSchema.parse(opportunitiesData);
 
 function preventPaginationNavigation(event: React.MouseEvent<HTMLAnchorElement>) {
   event.preventDefault();
 }
 
-export function OpportunitiesSection() {
+export function OpportunitiesSection({ opportunities }: OpportunitiesSectionProps) {
   const [rowSelection, setRowSelection] = React.useState({});
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([]);
   const [columnVisibility] = React.useState<ColumnVisibilityState>({});
@@ -53,9 +58,16 @@ export function OpportunitiesSection() {
     pageSize: 10,
   });
 
+  const data = React.useMemo(() => {
+    if (opportunities && opportunities.length > 0) {
+      return opportunitiesSchema.parse(opportunities);
+    }
+    return defaultOpportunities;
+  }, [opportunities]);
+
   const table = useTable({
     features: dataTableFeatures,
-    data: opportunities,
+    data,
     columns: opportunitiesColumns,
     state: {
       rowSelection,
