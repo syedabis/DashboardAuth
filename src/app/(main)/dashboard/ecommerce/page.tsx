@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Separator } from "@/components/ui/separator";
-import { fetchEcommerceSheetData } from "@/lib/google-sheets";
+import { fetchEcommerceData } from "@/lib/ecommerce/data";
 
 import { CountryBreakdown } from "./_components/country-breakdown";
 import { KpiStrip } from "./_components/kpi-strip";
@@ -14,9 +14,9 @@ import { TopCustomers } from "./_components/top-customers";
 import { TopProducts } from "./_components/top-products";
 
 export const metadata: Metadata = {
-  title: "E-commerce Dashboard | Google Sheets Connected",
+  title: "E-commerce Dashboard | Supabase Connected",
   description:
-    "Explore e-commerce sales performance, top products, orders, and customer KPIs powered by live Google Sheets data.",
+    "Explore e-commerce sales performance, top products, orders, and customer KPIs powered by live Supabase data.",
   alternates: {
     canonical: "/dashboard/ecommerce",
   },
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 
 export default async function Page() {
   const formattedDate = format(new Date(), "EEEE, do MMMM yyyy");
-  const sheetData = await fetchEcommerceSheetData();
+  const sheetData = await fetchEcommerceData();
 
   return (
     <div className="flex flex-col gap-4">
@@ -66,19 +66,19 @@ export default async function Page() {
         <KpiStrip data={sheetData} />
 
         <div className="xl:col-span-4">
-          <TopProducts products={sheetData?.topProducts} />
+          <TopProducts products={sheetData.topProducts} />
         </div>
 
         <div className="xl:col-span-4">
-          <CountryBreakdown data={sheetData?.countryBreakdown} />
+          <CountryBreakdown data={sheetData.countryBreakdown} />
         </div>
 
         <div className="xl:col-span-4">
-          <TopCustomers customers={sheetData?.topCustomers} />
+          <TopCustomers customers={sheetData.topCustomers} />
         </div>
 
         <div className="xl:col-span-12">
-          <RecentOrders orders={sheetData?.recentOrders} />
+          <RecentOrders orders={sheetData.recentOrders} />
         </div>
       </div>
     </div>

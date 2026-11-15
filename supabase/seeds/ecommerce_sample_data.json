@@ -1,0 +1,636 @@
+{
+  "products": [
+    {
+      "name": "Linen Overshirt",
+      "stock_code": "85123A",
+      "category": "Apparel",
+      "price": 120,
+      "sales_volume": 124,
+      "total_revenue": 14820
+    },
+    {
+      "name": "Everyday Leather Tote",
+      "stock_code": "71053",
+      "category": "Accessories",
+      "price": 185,
+      "sales_volume": 62,
+      "total_revenue": 11460
+    },
+    {
+      "name": "Ceramic Ribbed Planter",
+      "stock_code": "84406B",
+      "category": "Home Decor",
+      "price": 45,
+      "sales_volume": 198,
+      "total_revenue": 8930
+    },
+    {
+      "name": "Merino Wool Throw Blanket",
+      "stock_code": "22752",
+      "category": "Home Decor",
+      "price": 95,
+      "sales_volume": 76,
+      "total_revenue": 7280
+    },
+    {
+      "name": "Architectural Desk Lamp",
+      "stock_code": "21733",
+      "category": "Lighting",
+      "price": 140,
+      "sales_volume": 43,
+      "total_revenue": 6070
+    },
+    {
+      "name": "Handmade Stoneware Mug",
+      "stock_code": "35970",
+      "category": "Kitchen",
+      "price": 28,
+      "sales_volume": 142,
+      "total_revenue": 3976
+    },
+    {
+      "name": "Organic Cotton Bed Set",
+      "stock_code": "47566",
+      "category": "Bedding",
+      "price": 210,
+      "sales_volume": 18,
+      "total_revenue": 3780
+    },
+    {
+      "name": "Walnut Monitor Stand",
+      "stock_code": "82482",
+      "category": "Office",
+      "price": 88,
+      "sales_volume": 36,
+      "total_revenue": 3168
+    }
+  ],
+  "monthlyStats": [
+    {
+      "period": "Jan",
+      "month_num": 1,
+      "year": 2026,
+      "revenue": 58000,
+      "orders_count": 340
+    },
+    {
+      "period": "Feb",
+      "month_num": 2,
+      "year": 2026,
+      "revenue": 62000,
+      "orders_count": 375
+    },
+    {
+      "period": "Mar",
+      "month_num": 3,
+      "year": 2026,
+      "revenue": 71000,
+      "orders_count": 420
+    },
+    {
+      "period": "Apr",
+      "month_num": 4,
+      "year": 2026,
+      "revenue": 68500,
+      "orders_count": 405
+    },
+    {
+      "period": "May",
+      "month_num": 5,
+      "year": 2026,
+      "revenue": 74200,
+      "orders_count": 445
+    },
+    {
+      "period": "Jun",
+      "month_num": 6,
+      "year": 2026,
+      "revenue": 82000,
+      "orders_count": 490
+    },
+    {
+      "period": "Jul",
+      "month_num": 7,
+      "year": 2026,
+      "revenue": 89500,
+      "orders_count": 530
+    },
+    {
+      "period": "Aug",
+      "month_num": 8,
+      "year": 2026,
+      "revenue": 94000,
+      "orders_count": 560
+    },
+    {
+      "period": "Sep",
+      "month_num": 9,
+      "year": 2026,
+      "revenue": 98200,
+      "orders_count": 585
+    },
+    {
+      "period": "Oct",
+      "month_num": 10,
+      "year": 2026,
+      "revenue": 105400,
+      "orders_count": 625
+    },
+    {
+      "period": "Nov",
+      "month_num": 11,
+      "year": 2026,
+      "revenue": 121000,
+      "orders_count": 710
+    },
+    {
+      "period": "Dec",
+      "month_num": 12,
+      "year": 2026,
+      "revenue": 148000,
+      "orders_count": 880
+    }
+  ],
+  "orders": [
+    {
+      "order_number": "ORD-536365",
+      "customer_id": "17850",
+      "customer_name": "Customer #17850",
+      "country": "United Kingdom",
+      "total_amount": 139.1,
+      "items_count": 6,
+      "status": "Completed",
+      "payment_status": "Paid",
+      "fulfillment_status": "Fulfilled",
+      "created_at": "2026-11-14T08:26:00Z"
+    },
+    {
+      "order_number": "ORD-536366",
+      "customer_id": "17850",
+      "customer_name": "Customer #17850",
+      "country": "United Kingdom",
+      "total_amount": 22.2,
+      "items_count": 2,
+      "status": "Completed",
+      "payment_status": "Paid",
+      "fulfillment_status": "Fulfilled",
+      "created_at": "2026-11-14T08:28:00Z"
+    },
+    {
+      "order_number": "ORD-536367",
+      "customer_id": "13047",
+      "customer_name": "Customer #13047",
+      "country": "United Kingdom",
+      "total_amount": 278.7,
+      "items_count": 12,
+      "status": "Completed",
+      "payment_status": "Paid",
+      "fulfillment_status": "Fulfilled",
+      "created_at": "2026-11-14T08:34:00Z"
+    },
+    {
+      "order_number": "ORD-536368",
+      "customer_id": "13047",
+      "customer_name": "Customer #13047",
+      "country": "United Kingdom",
+      "total_amount": 70.05,
+      "items_count": 4,
+      "status": "Completed",
+      "payment_status": "Paid",
+      "fulfillment_status": "Fulfilled",
+      "created_at": "2026-11-14T08:34:00Z"
+    },
+    {
+      "order_number": "ORD-536369",
+      "customer_id": "13047",
+      "customer_name": "Customer #13047",
+      "country": "United Kingdom",
+      "total_amount": 17.85,
+      "items_count": 1,
+      "status": "Completed",
+      "payment_status": "Paid",
+      "fulfillment_status": "Fulfilled",
+      "created_at": "2026-11-14T08:35:00Z"
+    },
+    {
+      "order_number": "ORD-536370",
+      "customer_id": "12583",
+      "customer_name": "Customer #12583",
+      "country": "France",
+      "total_amount": 855.86,
+      "items_count": 20,
+      "status": "Completed",
+      "payment_status": "Paid",
+      "fulfillment_status": "Fulfilled",
+      "created_at": "2026-11-14T08:45:00Z"
+    },
+    {
+      "order_number": "ORD-536371",
+      "customer_id": "13767",
+      "customer_name": "Customer #13767",
+      "country": "United Kingdom",
+      "total_amount": 412.5,
+      "items_count": 5,
+      "status": "Completed",
+      "payment_status": "Paid",
+      "fulfillment_status": "Fulfilled",
+      "created_at": "2026-11-14T09:02:00Z"
+    },
+    {
+      "order_number": "ORD-536372",
+      "customer_id": "17920",
+      "customer_name": "Customer #17920",
+      "country": "United Kingdom",
+      "total_amount": 185,
+      "items_count": 1,
+      "status": "Completed",
+      "payment_status": "Paid",
+      "fulfillment_status": "Fulfilled",
+      "created_at": "2026-11-14T09:15:00Z"
+    },
+    {
+      "order_number": "ORD-536373",
+      "customer_id": "14527",
+      "customer_name": "Customer #14527",
+      "country": "United Kingdom",
+      "total_amount": 27.5,
+      "items_count": 1,
+      "status": "Returned",
+      "payment_status": "Refunded",
+      "fulfillment_status": "Returned",
+      "created_at": "2026-11-14T09:41:00Z"
+    },
+    {
+      "order_number": "ORD-536374",
+      "customer_id": "12662",
+      "customer_name": "Customer #12662",
+      "country": "Germany",
+      "total_amount": 540,
+      "items_count": 4,
+      "status": "Completed",
+      "payment_status": "Paid",
+      "fulfillment_status": "Fulfilled",
+      "created_at": "2026-11-14T10:12:00Z"
+    },
+    {
+      "order_number": "ORD-536375",
+      "customer_id": "17850",
+      "customer_name": "Customer #17850",
+      "country": "United Kingdom",
+      "total_amount": 320,
+      "items_count": 3,
+      "status": "Completed",
+      "payment_status": "Paid",
+      "fulfillment_status": "Fulfilled",
+      "created_at": "2026-11-14T10:30:00Z"
+    },
+    {
+      "order_number": "ORD-536376",
+      "customer_id": "14688",
+      "customer_name": "Customer #14688",
+      "country": "United States",
+      "total_amount": 620.4,
+      "items_count": 6,
+      "status": "Completed",
+      "payment_status": "Paid",
+      "fulfillment_status": "Fulfilled",
+      "created_at": "2026-11-14T11:05:00Z"
+    },
+    {
+      "order_number": "ORD-536377",
+      "customer_id": "15311",
+      "customer_name": "Customer #15311",
+      "country": "United Kingdom",
+      "total_amount": 495,
+      "items_count": 5,
+      "status": "Completed",
+      "payment_status": "Paid",
+      "fulfillment_status": "Fulfilled",
+      "created_at": "2026-11-14T11:20:00Z"
+    },
+    {
+      "order_number": "ORD-536378",
+      "customer_id": "16029",
+      "customer_name": "Customer #16029",
+      "country": "United Kingdom",
+      "total_amount": 1120,
+      "items_count": 10,
+      "status": "Completed",
+      "payment_status": "Paid",
+      "fulfillment_status": "Fulfilled",
+      "created_at": "2026-11-14T11:45:00Z"
+    },
+    {
+      "order_number": "ORD-536379",
+      "customer_id": "12431",
+      "customer_name": "Customer #12431",
+      "country": "Australia",
+      "total_amount": 360,
+      "items_count": 3,
+      "status": "Completed",
+      "payment_status": "Paid",
+      "fulfillment_status": "Fulfilled",
+      "created_at": "2026-11-14T12:10:00Z"
+    },
+    {
+      "order_number": "ORD-536380",
+      "customer_id": "12753",
+      "customer_name": "Customer #12753",
+      "country": "Germany",
+      "total_amount": 720,
+      "items_count": 6,
+      "status": "Completed",
+      "payment_status": "Paid",
+      "fulfillment_status": "Fulfilled",
+      "created_at": "2026-11-14T12:45:00Z"
+    },
+    {
+      "order_number": "ORD-536381",
+      "customer_id": "14911",
+      "customer_name": "Customer #14911",
+      "country": "EIRE",
+      "total_amount": 980.5,
+      "items_count": 8,
+      "status": "Completed",
+      "payment_status": "Paid",
+      "fulfillment_status": "Fulfilled",
+      "created_at": "2026-11-14T13:15:00Z"
+    },
+    {
+      "order_number": "ORD-536382",
+      "customer_id": "17850",
+      "customer_name": "Customer #17850",
+      "country": "United Kingdom",
+      "total_amount": 210,
+      "items_count": 2,
+      "status": "Completed",
+      "payment_status": "Paid",
+      "fulfillment_status": "Fulfilled",
+      "created_at": "2026-11-14T13:30:00Z"
+    },
+    {
+      "order_number": "ORD-536383",
+      "customer_id": "13047",
+      "customer_name": "Customer #13047",
+      "country": "United Kingdom",
+      "total_amount": 450,
+      "items_count": 4,
+      "status": "Completed",
+      "payment_status": "Paid",
+      "fulfillment_status": "Fulfilled",
+      "created_at": "2026-11-14T14:00:00Z"
+    },
+    {
+      "order_number": "ORD-536384",
+      "customer_id": "12583",
+      "customer_name": "Customer #12583",
+      "country": "France",
+      "total_amount": 310,
+      "items_count": 3,
+      "status": "Completed",
+      "payment_status": "Paid",
+      "fulfillment_status": "Fulfilled",
+      "created_at": "2026-11-14T14:20:00Z"
+    },
+    {
+      "order_number": "ORD-536385",
+      "customer_id": "14096",
+      "customer_name": "Customer #14096",
+      "country": "United Kingdom",
+      "total_amount": 670,
+      "items_count": 6,
+      "status": "Completed",
+      "payment_status": "Paid",
+      "fulfillment_status": "Fulfilled",
+      "created_at": "2026-11-14T14:40:00Z"
+    },
+    {
+      "order_number": "ORD-536386",
+      "customer_id": "14156",
+      "customer_name": "Customer #14156",
+      "country": "EIRE",
+      "total_amount": 890,
+      "items_count": 7,
+      "status": "Completed",
+      "payment_status": "Paid",
+      "fulfillment_status": "Fulfilled",
+      "created_at": "2026-11-14T15:00:00Z"
+    },
+    {
+      "order_number": "ORD-536387",
+      "customer_id": "12346",
+      "customer_name": "Customer #12346",
+      "country": "United Kingdom",
+      "total_amount": 45,
+      "items_count": 1,
+      "status": "Returned",
+      "payment_status": "Refunded",
+      "fulfillment_status": "Returned",
+      "created_at": "2026-11-14T15:30:00Z"
+    },
+    {
+      "order_number": "ORD-536388",
+      "customer_id": "15061",
+      "customer_name": "Customer #15061",
+      "country": "United Kingdom",
+      "total_amount": 520,
+      "items_count": 4,
+      "status": "Completed",
+      "payment_status": "Paid",
+      "fulfillment_status": "Fulfilled",
+      "created_at": "2026-11-14T16:00:00Z"
+    },
+    {
+      "order_number": "ORD-536389",
+      "customer_id": "12415",
+      "customer_name": "Customer #12415",
+      "country": "Australia",
+      "total_amount": 1450,
+      "items_count": 12,
+      "status": "Completed",
+      "payment_status": "Paid",
+      "fulfillment_status": "Fulfilled",
+      "created_at": "2026-11-14T16:20:00Z"
+    },
+    {
+      "order_number": "ORD-536390",
+      "customer_id": "13767",
+      "customer_name": "Customer #13767",
+      "country": "United Kingdom",
+      "total_amount": 380,
+      "items_count": 3,
+      "status": "Completed",
+      "payment_status": "Paid",
+      "fulfillment_status": "Fulfilled",
+      "created_at": "2026-11-14T16:50:00Z"
+    },
+    {
+      "order_number": "ORD-536391",
+      "customer_id": "17511",
+      "customer_name": "Customer #17511",
+      "country": "United Kingdom",
+      "total_amount": 830,
+      "items_count": 7,
+      "status": "Completed",
+      "payment_status": "Paid",
+      "fulfillment_status": "Fulfilled",
+      "created_at": "2026-11-14T17:15:00Z"
+    },
+    {
+      "order_number": "ORD-536392",
+      "customer_id": "12681",
+      "customer_name": "Customer #12681",
+      "country": "France",
+      "total_amount": 480,
+      "items_count": 4,
+      "status": "Completed",
+      "payment_status": "Paid",
+      "fulfillment_status": "Fulfilled",
+      "created_at": "2026-11-14T17:40:00Z"
+    },
+    {
+      "order_number": "ORD-536393",
+      "customer_id": "12748",
+      "customer_name": "Customer #12748",
+      "country": "United Kingdom",
+      "total_amount": 640,
+      "items_count": 5,
+      "status": "Completed",
+      "payment_status": "Paid",
+      "fulfillment_status": "Fulfilled",
+      "created_at": "2026-11-14T18:00:00Z"
+    },
+    {
+      "order_number": "ORD-536394",
+      "customer_id": "17850",
+      "customer_name": "Customer #17850",
+      "country": "United Kingdom",
+      "total_amount": 420,
+      "items_count": 4,
+      "status": "Completed",
+      "payment_status": "Paid",
+      "fulfillment_status": "Fulfilled",
+      "created_at": "2026-11-14T18:25:00Z"
+    },
+    {
+      "order_number": "ORD-536395",
+      "customer_id": "13047",
+      "customer_name": "Customer #13047",
+      "country": "United Kingdom",
+      "total_amount": 290,
+      "items_count": 2,
+      "status": "Completed",
+      "payment_status": "Paid",
+      "fulfillment_status": "Fulfilled",
+      "created_at": "2026-11-14T18:50:00Z"
+    },
+    {
+      "order_number": "ORD-536396",
+      "customer_id": "13694",
+      "customer_name": "Customer #13694",
+      "country": "United Kingdom",
+      "total_amount": 510,
+      "items_count": 4,
+      "status": "Completed",
+      "payment_status": "Paid",
+      "fulfillment_status": "Fulfilled",
+      "created_at": "2026-11-14T19:10:00Z"
+    },
+    {
+      "order_number": "ORD-536397",
+      "customer_id": "12621",
+      "customer_name": "Customer #12621",
+      "country": "Germany",
+      "total_amount": 620,
+      "items_count": 5,
+      "status": "Completed",
+      "payment_status": "Paid",
+      "fulfillment_status": "Fulfilled",
+      "created_at": "2026-11-14T19:30:00Z"
+    },
+    {
+      "order_number": "ORD-536398",
+      "customer_id": "15769",
+      "customer_name": "Customer #15769",
+      "country": "United Kingdom",
+      "total_amount": 375,
+      "items_count": 3,
+      "status": "Completed",
+      "payment_status": "Paid",
+      "fulfillment_status": "Fulfilled",
+      "created_at": "2026-11-14T19:55:00Z"
+    },
+    {
+      "order_number": "ORD-536399",
+      "customer_id": "12528",
+      "customer_name": "Customer #12528",
+      "country": "Germany",
+      "total_amount": 480,
+      "items_count": 4,
+      "status": "Completed",
+      "payment_status": "Paid",
+      "fulfillment_status": "Fulfilled",
+      "created_at": "2026-11-14T20:15:00Z"
+    },
+    {
+      "order_number": "ORD-536400",
+      "customer_id": "15311",
+      "customer_name": "Customer #15311",
+      "country": "United Kingdom",
+      "total_amount": 720,
+      "items_count": 6,
+      "status": "Completed",
+      "payment_status": "Paid",
+      "fulfillment_status": "Fulfilled",
+      "created_at": "2026-11-14T20:45:00Z"
+    },
+    {
+      "order_number": "ORD-536401",
+      "customer_id": "17850",
+      "customer_name": "Customer #17850",
+      "country": "United Kingdom",
+      "total_amount": 890,
+      "items_count": 8,
+      "status": "Completed",
+      "payment_status": "Paid",
+      "fulfillment_status": "Fulfilled",
+      "created_at": "2026-11-14T21:10:00Z"
+    },
+    {
+      "order_number": "ORD-536402",
+      "customer_id": "12471",
+      "customer_name": "Customer #12471",
+      "country": "Germany",
+      "total_amount": 1100,
+      "items_count": 9,
+      "status": "Completed",
+      "payment_status": "Paid",
+      "fulfillment_status": "Fulfilled",
+      "created_at": "2026-11-14T21:35:00Z"
+    },
+    {
+      "order_number": "ORD-536403",
+      "customer_id": "14646",
+      "customer_name": "Customer #14646",
+      "country": "Netherlands",
+      "total_amount": 1650,
+      "items_count": 14,
+      "status": "Completed",
+      "payment_status": "Paid",
+      "fulfillment_status": "Fulfilled",
+      "created_at": "2026-11-14T22:00:00Z"
+    },
+    {
+      "order_number": "ORD-536404",
+      "customer_id": "18102",
+      "customer_name": "Customer #18102",
+      "country": "United Kingdom",
+      "total_amount": 1980,
+      "items_count": 16,
+      "status": "Completed",
+      "payment_status": "Paid",
+      "fulfillment_status": "Fulfilled",
+      "created_at": "2026-11-14T22:30:00Z"
+    }
+  ]
+}

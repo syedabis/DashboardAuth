@@ -1,7 +1,8 @@
 import { NextResponse } from "next/server";
 
-import { defaultEcommerceData } from "@/lib/google-sheets";
+import { fetchEcommerceData } from "@/lib/ecommerce/data";
 
 export async function GET() {
-  return NextResponse.json(defaultEcommerceData);
+  const data = await fetchEcommerceData();
+  return NextResponse.json(data);
 }
