@@ -1,4 +1,4 @@
-import { Banknote, ChartBar, Gauge, LayoutDashboard, type LucideIcon, ShoppingBag } from "lucide-react";
+import { Banknote, ChartBar, Database, Gauge, LayoutDashboard, type LucideIcon, ShoppingBag } from "lucide-react";
 
 export type NavBadge = "new" | "soon";
 
@@ -72,6 +72,12 @@ export const sidebarItems: NavGroup[] = [
         title: "E-commerce",
         url: "/dashboard/ecommerce",
         icon: ShoppingBag,
+      },
+      {
+        id: "data",
+        title: "Data Tables",
+        url: "/dashboard/data",
+        icon: Database,
       },
     ],
   },

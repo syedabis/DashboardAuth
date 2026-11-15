@@ -12,6 +12,7 @@ export async function POST(request: Request) {
     let isAuthenticated = false;
     let userName = "";
     let userEmail = email;
+    let userRole = "admin";
 
     // 1. Try Supabase Auth
     try {
@@ -25,6 +26,7 @@ export async function POST(request: Request) {
         isAuthenticated = true;
         userEmail = authData.user.email || email;
         userName = (authData.user.user_metadata?.name as string) || (userEmail.split("@")[0] as string);
+        userRole = (authData.user.user_metadata?.role as string) || "member";
       }
     } catch {
       // Supabase network fallback
@@ -47,6 +49,7 @@ export async function POST(request: Request) {
           ? "faysal.naqvi@gascoengineering.com.pk"
           : "abis@datacrumbs.org";
         userName = email.toLowerCase().includes("faysal") ? "Faysal Naqvi" : "Abis";
+        userRole = "admin";
       }
     }
 
@@ -76,7 +79,15 @@ export async function POST(request: Request) {
         path: "/",
       });
 
-      return NextResponse.json({ success: true, message: "Login successful" });
+      cookieStore.set("auth_user_role", userRole, {
+        httpOnly: false,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: "lax",
+        maxAge: 60 * 60 * 24 * 7,
+        path: "/",
+      });
+
+      return NextResponse.json({ success: true, message: "Login successful", role: userRole });
     }
 
     return NextResponse.json({ success: false, message: "Invalid username, email, or password" }, { status: 401 });
