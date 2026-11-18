@@ -44,7 +44,7 @@ export function KpiStrip({ data }: KpiStripProps) {
               <CardContent>
                 <div className="text-sm">
                   <span className="text-green-700 dark:text-green-300">Live</span>
-                  <span className="text-muted-foreground"> from Google Sheet</span>
+                  <span className="text-muted-foreground"> from Supabase</span>
                 </div>
               </CardContent>
             </Card>
