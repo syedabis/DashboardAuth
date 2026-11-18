@@ -1,0 +1,11 @@
+country,total_sales,orders_count,market_share_percentage
+"United Kingdom",88450.00,420,"65.0%"
+"Germany",6200.00,48,"6.0%"
+"France",4800.00,36,"4.5%"
+"EIRE",2500.00,20,"2.4%"
+"Spain",2100.00,18,"2.0%"
+"Netherlands",1850.00,15,"1.8%"
+"Belgium",1420.00,12,"1.4%"
+"Switzerland",1250.00,10,"1.2%"
+"Australia",1100.00,9,"1.1%"
+"Portugal",980.00,8,"1.0%"
