@@ -63,22 +63,10 @@ export default function LoginPage() {
           {/* Top Green Gradient Accent Bar */}
           <div className="h-[5px] bg-gradient-to-r from-[#5BBE44] to-[#8DC63F]" />
 
-          <div className="px-10 pt-9 pb-8 sm:px-10">
-            {/* Logo */}
-            <div className="mb-7 flex justify-center">
-              <Image
-                src="/images/gasco-logo.png"
-                alt="GASCO Engineering"
-                width={220}
-                height={55}
-                priority
-                className="h-12 w-auto object-contain"
-              />
-            </div>
-
+          <div className="px-10 pt-10 pb-8 sm:px-10">
             {/* Title & Subtitle */}
-            <h2 className="mb-1.5 text-center font-[800] text-[#111827] text-[24px] tracking-tight">
-              Welcome to GASCO
+            <h2 className="mb-2 text-center font-[800] text-[#111827] text-[26px] tracking-tight">
+              Welcome to Intelligence
             </h2>
             <p className="mb-[30px] text-center text-[#6B7280] text-[13.5px] leading-normal">
               Your procurement intelligence platform
