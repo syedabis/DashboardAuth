@@ -3,6 +3,7 @@ import { NextResponse } from "next/server";
 
 export function middleware(request: NextRequest) {
   const authToken = request.cookies.get("auth_token")?.value;
+  const userRole = request.cookies.get("auth_user_role")?.value?.toLowerCase();
   const { pathname } = request.nextUrl;
 
   // Root route: redirect based on auth status
@@ -20,6 +21,14 @@ export function middleware(request: NextRequest) {
     if (!authToken) {
       const loginUrl = new URL("/login", request.url);
       return NextResponse.redirect(loginUrl);
+    }
+
+    // Role-based route protection: Admin-only routes
+    if (pathname.startsWith("/dashboard/users")) {
+      if (userRole !== "admin") {
+        const unauthorizedUrl = new URL("/unauthorized", request.url);
+        return NextResponse.redirect(unauthorizedUrl);
+      }
     }
   }
 

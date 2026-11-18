@@ -1,4 +1,4 @@
-import { Banknote, ChartBar, Gauge, LayoutDashboard, type LucideIcon, ShoppingBag } from "lucide-react";
+import { Banknote, ChartBar, Gauge, LayoutDashboard, type LucideIcon, ShoppingBag, UserCog } from "lucide-react";
 
 export type NavBadge = "new" | "soon";
 
@@ -76,3 +76,25 @@ export const sidebarItems: NavGroup[] = [
     ],
   },
 ];
+
+export const adminSidebarItems: NavGroup[] = [
+  {
+    id: 2,
+    label: "Administration",
+    items: [
+      {
+        id: "users",
+        title: "Users",
+        url: "/dashboard/users",
+        icon: UserCog,
+      },
+    ],
+  },
+];
+
+export function getSidebarItems(role?: string): NavGroup[] {
+  if (role === "admin") {
+    return [...sidebarItems, ...adminSidebarItems];
+  }
+  return sidebarItems;
+}

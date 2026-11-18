@@ -15,8 +15,8 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import { APP_CONFIG } from "@/config/app-config";
-import { rootUser } from "@/data/users";
-import { sidebarItems } from "@/navigation/sidebar/sidebar-items";
+import { rootUser, type UserProfile } from "@/data/users";
+import { getSidebarItems } from "@/navigation/sidebar/sidebar-items";
 import { usePreferencesStore } from "@/stores/preferences/preferences-provider";
 
 import { NavMain } from "./nav-main";
@@ -26,7 +26,7 @@ export function AppSidebar({
   currentUser = rootUser,
   ...props
 }: React.ComponentProps<typeof Sidebar> & {
-  readonly currentUser?: typeof rootUser;
+  readonly currentUser?: UserProfile;
 }) {
   const { sidebarVariant, sidebarCollapsible, isSynced } = usePreferencesStore(
     useShallow((s) => ({
@@ -38,6 +38,7 @@ export function AppSidebar({
 
   const variant = isSynced ? sidebarVariant : props.variant;
   const collapsible = isSynced ? sidebarCollapsible : props.collapsible;
+  const navItems = getSidebarItems(currentUser?.role);
 
   return (
     <Sidebar {...props} variant={variant} collapsible={collapsible}>
@@ -45,7 +46,7 @@ export function AppSidebar({
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton asChild>
-              <Link prefetch={false} href="/dashboard/default">
+              <Link prefetch={false} href="/dashboard/ecommerce">
                 <Command />
                 <span className="font-semibold text-base">{APP_CONFIG.name}</span>
               </Link>
@@ -54,7 +55,7 @@ export function AppSidebar({
         </SidebarMenu>
       </SidebarHeader>
       <SidebarContent>
-        <NavMain items={sidebarItems} />
+        <NavMain items={navItems} />
       </SidebarContent>
       <SidebarFooter>
         <NavUser user={currentUser} />
