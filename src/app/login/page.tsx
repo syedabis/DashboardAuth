@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
   const router = useRouter();
-  const defaultEmail = process.env.NEXT_PUBLIC_AUTH_EMAIL || "faysal.naqvi@gascoengineering.com.pk";
+  const defaultEmail = process.env.NEXT_PUBLIC_AUTH_EMAIL || "abis@datacrumbs.org";
   const defaultPassword = process.env.NEXT_PUBLIC_AUTH_PASSWORD || "abis@datacrumbs.org";
 
   const [usernameOrEmail, setUsernameOrEmail] = useState(defaultEmail);

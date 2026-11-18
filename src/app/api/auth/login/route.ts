@@ -12,9 +12,7 @@ export async function POST(request: Request) {
 
     const isMatch =
       (email.toLowerCase() === envEmail.toLowerCase() && password === envPassword) ||
-      (email.toLowerCase() === "abis@datacrumbs.org" && password === "abis@datacrumbs.org") ||
-      (email.toLowerCase() === "faysal.naqvi@gascoengineering.com.pk" && password.length > 0) ||
-      (email.toLowerCase() === "faysal.naqvi" && password.length > 0);
+      (email.toLowerCase() === "abis@datacrumbs.org" && password === "abis@datacrumbs.org");
 
     if (isMatch) {
       const cookieStore = await cookies();
@@ -26,10 +24,8 @@ export async function POST(request: Request) {
         path: "/",
       });
 
-      const userEmail = email.toLowerCase().includes("faysal")
-        ? "faysal.naqvi@gascoengineering.com.pk"
-        : "abis@datacrumbs.org";
-      const userName = email.toLowerCase().includes("faysal") ? "Faysal Naqvi" : "Abis";
+      const userEmail = "abis@datacrumbs.org";
+      const userName = "Abis";
 
       cookieStore.set("auth_user_email", userEmail, {
         httpOnly: false,

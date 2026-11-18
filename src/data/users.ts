@@ -7,14 +7,6 @@ export const users = [
     avatar: "",
     role: "administrator",
   },
-  {
-    id: "2",
-    name: "Faysal Naqvi",
-    username: "faysal.naqvi",
-    email: "faysal.naqvi@gascoengineering.com.pk",
-    avatar: "",
-    role: "admin",
-  },
 ];
 
 export const rootUser = users[0];
